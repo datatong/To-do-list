@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+
+.add-and-submit {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+.clear-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.tasks-container {
+
+}
