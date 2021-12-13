@@ -11,16 +11,27 @@
                 <label for="task"></label>
                 <input type="text" id="task" name="task" placeholder="Add a task!">
 
-                <label for="submit-button"></label>
-                <input type="submit" id="submit-button" name="submit-button" value="Submit to list">
+                <label for="submit-btn"></label>
+                <input type="submit" id="submit-btn" name="submit-btn" value="Submit">
             </form>
         </div>
 
         <main>
-            <div class="tasks-container"></div>
+            <div class="tasks-container">
+                <div class="tasks-list">
+                    <article class="task-item">
+                        <p class="title">item</p>
+                        <div class="btn-container">
+                            <input type="checkbox" class="task-checkbox">
+                            <button type="button" class="delete-btn">Delete</button>
+                                <i class="fas fa-trash"></i>
+                        </div>
+                    </article>
+                </div>
+            </div>
 
             <div class="clear-container">
-                <button class="clear-all" name="clear-all">Clear all</button>
+                <button class="clear-all" name="clear-all">Clear all tasks</button>
             </div>
         </main>
     </body>
