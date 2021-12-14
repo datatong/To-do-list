@@ -7,9 +7,9 @@
     <body>
         <h1>To-Do List</h1>
         <div class="add-and-submit">
-            <form>
-                <label for="task"></label>
-                <input type="text" id="task" name="task" placeholder="Add a task!">
+            <form class="to-do-form">
+                <label for="to-do"></label>
+                <input type="text" id="to-do" name="to-do" placeholder="Add a task!">
 
                 <label for="submit-btn"></label>
                 <input type="submit" id="submit-btn" name="submit-btn" value="Submit">
@@ -17,8 +17,8 @@
         </div>
 
         <main>
-            <div class="tasks-container">
-                <div class="tasks-list">
+            <div class="task-container">
+                <div class="task-list">
                     <article class="task-item">
                         <p class="title">item</p>
                         <div class="btn-container">
@@ -31,7 +31,7 @@
             </div>
 
             <div class="clear-container">
-                <button class="clear-all" name="clear-all">Clear all tasks</button>
+                <button class="clear-all-btn" name="clear-all-btn">Clear all tasks</button>
             </div>
         </main>
     </body>
