@@ -23,6 +23,12 @@ h1 {
     align-content: center;
 }
 
+.show-container {
+    visibility: visible;
+}
+
+/*
 .template {
     display: none;
 }
+*/

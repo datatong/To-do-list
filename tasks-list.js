@@ -16,7 +16,7 @@ let editID = "";
 toDoForm.addEventListener('submit', addTask);
 
 // clear items
-
+clearAll.addEventListener('click', clearAllTasks);
 
 // ***** FUNCTIONS *****
 function addTask(e) {
@@ -53,13 +53,29 @@ function addTask(e) {
         console.log('empty value');
     }
 
-    /*const template = document.querySelector('.task-item.template');
+    /*
+    const template = document.querySelector('.task-item.template');
     const item = template.cloneNode(true);
     item.classList.remove('template');
     item.childNodes[1].innerHTML = toDo.value;
     item.childNodes[3].childNodes[5].addEventListener('click', () => item.remove());
-    container.append(item);*/
+    container.append(item);
+    */
 }
+
+//clear all tasks
+function clearAllTasks() {
+    const allTasks = document.querySelectorAll('.task-item');
+
+    if (allTasks.length > 0) {
+        allTasks.forEach(function (item) {
+            list.removeChild(item);
+        });
+    }
+    container.classList.remove("show-container");
+    displayAlert();
+}
+
 
 // set back to default
 function setBackToDefault() {
