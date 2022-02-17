@@ -14,9 +14,10 @@ let editID = "";
 // ***** EVENT LISTENERS *****
 //submit form
 toDoForm.addEventListener('submit', addTask);
-
 // clear items
 clearAll.addEventListener('click', clearAllTasks);
+// load items
+window.addEventListener('DOMContentLoaded', setupItems);
 
 // ***** FUNCTIONS *****
 function addTask(e) {
@@ -25,30 +26,7 @@ function addTask(e) {
     const value = toDo.value;
     const id = new Date().getTime().toString();
     if (value !== "" && editFlag === false) {
-        const element = document.createElement('article');
-        // add class
-        element.classList.add('task-item');
-        // add id
-        const attr = document.createAttribute('data-id');
-        attr.value = id;
-        element.setAttributeNode(attr);
-        element.innerHTML = `<p class="title">${value}</p>
-        <div class="btn-container">
-            <input type="checkbox" class="task-checkbox">
-            <button type="button" class="edit-btn">Edit
-                <i class="fas fa-edit"></i>
-            </button>
-            <button type="button" class="delete-btn">Delete
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>`;
-        const deleteBtn = element.querySelector('.delete-btn');
-        const editBtn = element.querySelector('.edit-btn');
-        deleteBtn.addEventListener('click', deleteTask);
-        editBtn.addEventListener('click', editTask);
-
-        // append child
-        list.appendChild(element);
+        createListItem(id, value);
         // show container
         container.classList.add("show-container");
         // add to local storage
@@ -150,7 +128,7 @@ function editLocalStorage(id, value) {
     localStorage.setItem('list', JSON.stringify(items));
 }
 
-function getLocalStorage () {
+function getLocalStorage() {
     return localStorage.getItem("list")
         ? JSON.parse(localStorage.getItem("list"))
         : [];
@@ -168,3 +146,39 @@ function getLocalStorage () {
 //localStorage.removeItem("action");
 
 // ***** SETUP ITEMS *****
+function setupItems() {
+    let items = getlocalStorage();
+    if (items.length > 0) {
+        items.forEach(function(item) {
+            createListItem(item.id, item.value);
+        });
+        container.classList.add('show-container');
+    }
+}
+
+function createListItem(id, value) {
+    const element = document.createElement('article');
+    // add class
+    element.classList.add('task-item');
+    // add id
+    const attr = document.createAttribute('data-id');
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = `<p class="title">${value}</p>
+    <div class="btn-container">
+        <input type="checkbox" class="task-checkbox">
+        <button type="button" class="edit-btn">Edit
+            <i class="fas fa-edit"></i>
+        </button>
+        <button type="button" class="delete-btn">Delete
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>`;
+    const deleteBtn = element.querySelector('.delete-btn');
+    const editBtn = element.querySelector('.edit-btn');
+    deleteBtn.addEventListener('click', deleteTask);
+    editBtn.addEventListener('click', editTask);
+
+    // append child
+    list.appendChild(element);
+}
