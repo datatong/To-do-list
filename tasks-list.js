@@ -5,6 +5,7 @@ const submitBtn = document.getElementById('submit-btn');
 const container = document.querySelector('.task-container');
 const list = document.querySelector('.task-list');
 const clearAll = document.querySelector('.clear-all-btn');
+const taskCheckbox = document.querySelector('.task-checkbox');
 
 //edit option
 let editElement;
@@ -18,6 +19,9 @@ toDoForm.addEventListener('submit', addTask);
 clearAll.addEventListener('click', clearAllTasks);
 // load items
 window.addEventListener('DOMContentLoaded', setupItems);
+//strike-through items on checkbox //
+taskCheckbox.addEventListener('click', strikeThrough);
+//highlight item on edit //
 
 // ***** FUNCTIONS *****
 function addTask(e) {
@@ -63,7 +67,7 @@ function clearAllTasks() {
     }
     container.classList.remove("show-container");
     setBackToDefault();
-    // localStorage.removeItem('list');
+    localStorage.removeItem('list');
 }
 
 // delete function
@@ -72,8 +76,8 @@ function deleteTask(e) {
     const id = element.dataset.id;
     list.removeChild(element);
     setBackToDefault();
-    // remove from local storage
-    //removeFromLocalStorage(id);
+    //remove from local storage
+    removeFromLocalStorage(id);
 }
 
 // edit function
@@ -85,7 +89,11 @@ function editTask(e) {
     toDo.value = editElement.innerHTML;
     editFlag = true;
     editID = element.dataset.id;
-    submitBtn.textContent = "edit";    
+    submitBtn.textContent = "Edit";
+    // highlight on edit
+    element.classList.add('edit-color');
+    // remove highlight after edit
+    submitBtn.addEventListener( 'click', element.classList.remove('edit-color'));  
 }
 
 // set back to default
@@ -93,7 +101,13 @@ function setBackToDefault() {
     toDo.value = "";
     editFlag = false;
     editID = "";
-    submitBtn.textContent = "submit";
+    submitBtn.textContent = "Submit";
+}
+
+// strike-through function
+function strikeThrough(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    element.classList.add('strike-through'); 
 }
 
 // ***** LOCAL STORAGE *****
@@ -147,7 +161,7 @@ function getLocalStorage() {
 
 // ***** SETUP ITEMS *****
 function setupItems() {
-    let items = getlocalStorage();
+    let items = getLocalStorage();
     if (items.length > 0) {
         items.forEach(function(item) {
             createListItem(item.id, item.value);
@@ -178,6 +192,8 @@ function createListItem(id, value) {
     const editBtn = element.querySelector('.edit-btn');
     deleteBtn.addEventListener('click', deleteTask);
     editBtn.addEventListener('click', editTask);
+
+    // add taskbox strike-though eventlistener here? //
 
     // append child
     list.appendChild(element);

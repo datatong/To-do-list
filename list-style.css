@@ -32,3 +32,11 @@ h1 {
     display: none;
 }
 */
+
+.edit-color {
+    background-color: rgb(253, 253, 135);
+}
+
+.strike-through {
+    text-decoration: line-through;
+}
