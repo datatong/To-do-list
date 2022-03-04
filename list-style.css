@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+body {
+    /*background-color:*/
+}
+
 .add-and-submit {
     display: flex;
     flex-flow: row nowrap;
@@ -15,12 +19,29 @@ h1 {
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-top: 2%;
+    padding: 2% 0 2% 0;
 }
 
 .task-container {
     display: flex;
     justify-content: center;
     align-content: center;
+}
+
+.task-list {
+    width: 25%;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted black;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
 }
 
 .show-container {
@@ -33,8 +54,12 @@ h1 {
 }
 */
 
-.edit-color {
+.highlight-edit {
     background-color: rgb(253, 253, 135);
+}
+
+.finish-edit {
+    background-color: transparent;
 }
 
 .strike-through {

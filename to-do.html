@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="list-style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Just... DO IT!!!</title>
     </head>
     <body>
@@ -9,7 +10,7 @@
         <div class="add-and-submit">
             <form class="to-do-form">
                 <label for="to-do"></label>
-                <input type="text" id="to-do" name="to-do" placeholder="Add a task!">
+                <input type="text" id="to-do" name="to-do" placeholder="Add a task!" autocomplete= "off">
 
                 <label for="submit-btn"></label>
                 <input type="submit" id="submit-btn" name="submit-btn" value="Submit">
@@ -25,10 +26,10 @@
                         <div class="btn-container">
                             <input type="checkbox" class="task-checkbox">
                             <button type="button" class="edit-btn">Edit
-                                <i class="fas fa-edit"></i>
+                                <i class="fa fa-edit"></i></button>
                             </button>
                             <button type="button" class="delete-btn">Delete
-                                <i class="fas fa-trash"></i>
+                                <i class="fa fa-trash"></i></button>
                             </button>
                         </div>
                     </article>

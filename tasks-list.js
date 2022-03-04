@@ -6,6 +6,7 @@ const container = document.querySelector('.task-container');
 const list = document.querySelector('.task-list');
 const clearAll = document.querySelector('.clear-all-btn');
 const taskCheckbox = document.querySelector('.task-checkbox');
+const taskItem = document.querySelector('.task-item');
 
 //edit option
 let editElement;
@@ -19,15 +20,17 @@ toDoForm.addEventListener('submit', addTask);
 clearAll.addEventListener('click', clearAllTasks);
 // load items
 window.addEventListener('DOMContentLoaded', setupItems);
-//strike-through items on checkbox //
-taskCheckbox.addEventListener('click', strikeThrough);
-//highlight item on edit //
+
+// strike-through items on checkbox //
+// taskCheckbox.addEventListener('click', strikeThrough);
+
 
 // ***** FUNCTIONS *****
 function addTask(e) {
     /*document.head.childNodes[1].href = "list-style2.css";*/
     e.preventDefault();
     const value = toDo.value;
+
     const id = new Date().getTime().toString();
     if (value !== "" && editFlag === false) {
         createListItem(id, value);
@@ -90,11 +93,12 @@ function editTask(e) {
     editFlag = true;
     editID = element.dataset.id;
     submitBtn.textContent = "Edit";
-    // highlight on edit
-    element.classList.add('edit-color');
-    // remove highlight after edit
-    submitBtn.addEventListener( 'click', element.classList.remove('edit-color'));  
+    // highlight on edit //
+    // element.classList.add('highlight-edit');
+    // remove highlight after edit //
+    //submitBtn.addEventListener( 'click', element.classList.remove('highlight-edit'));
 }
+
 
 // set back to default
 function setBackToDefault() {
@@ -181,19 +185,17 @@ function createListItem(id, value) {
     element.innerHTML = `<p class="title">${value}</p>
     <div class="btn-container">
         <input type="checkbox" class="task-checkbox">
-        <button type="button" class="edit-btn">Edit
-            <i class="fas fa-edit"></i>
+        <button type="button" class="edit-btn">
+        <i class="fa fa-edit"></i></button>
         </button>
-        <button type="button" class="delete-btn">Delete
-            <i class="fas fa-trash"></i>
+        <button type="button" class="delete-btn">
+        <i class="fa fa-trash"></i></button>
         </button>
     </div>`;
     const deleteBtn = element.querySelector('.delete-btn');
     const editBtn = element.querySelector('.edit-btn');
     deleteBtn.addEventListener('click', deleteTask);
     editBtn.addEventListener('click', editTask);
-
-    // add taskbox strike-though eventlistener here? //
 
     // append child
     list.appendChild(element);
